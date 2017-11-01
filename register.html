@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Register</title>
+	</head>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+	var socket = io.connect('http://localhost:8000');
+	var makeStudent = function(){
+		var firstName = document.getElementById('firstName').value;
+		var lastInitial = document.getElementById('lastInitial').value;
+		var school = document.getElementById('school').value;
+		socket.emit('makeStudent',[firstName,lastInitial,school])
+	};
+	</script>
+	<body>
+		<input type='text' id = 'firstName' placeholder = 'firstName'/>
+		<input type='text' id = 'lastInitial' placeholder = 'lastInitial'/>
+		<input type='text' id = 'school' placeholder = 'school'/>
+		<input type = 'submit' id = 'submit' onclick='makeStudent()'/>
+	</body>
+</html>
